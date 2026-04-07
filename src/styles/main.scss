@@ -1,0 +1,15 @@
+@use 'font';
+@use 'var';
+
+body {
+    font-family: var.$font;
+}
+
+a {
+    color: var.$dark;
+    transition: var.$tr;
+}
+
+a:hover {
+    color: var.$accent;
+}
