@@ -249,8 +249,10 @@ p {
             background-repeat: no-repeat;
             background-size: contain;
             position: absolute;
-            top: -1px;
-            right: 0;
+            // top: -1px;
+            top: -0.5px;
+            // right: 0;
+            right: 1px;
             transition: var.$tr;
         }
         &::after {
@@ -263,8 +265,10 @@ p {
             background-repeat: no-repeat;
             background-size: contain;
             position: absolute;
-            top: -1px;
-            right: 0;
+            // top: -1px;
+            top: -0.5px;
+            // right: 0;
+            right: 1px;
             opacity: 0;
             transition: var.$tr;
         }
