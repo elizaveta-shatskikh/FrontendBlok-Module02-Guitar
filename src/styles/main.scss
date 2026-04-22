@@ -176,49 +176,44 @@ p {
         border-right: none;
         border-radius: 20px 0 0 20px;
         position: relative;
+        z-index: 1;
         margin-right: 80px;
         box-sizing: border-box;
         transition: var.$tr;
         & + & {
             margin-top: 19px;
         }
-        &::before {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 151px;
-            background-image: url(../images/banner-info-decor.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: absolute;
-            top: -1px;
-            right: -80px;
-            transition: var.$tr;
-        }
-        &::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 151px;
-            background-image: url(../images/banner-info-decor-hover.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: absolute;
-            top: -1px;
-            right: -80px;
-            opacity: 0;
-            transition: var.$tr;
-        }
         &:hover {
-            background-color: var.$accent;
-            border-color: var.$accent;
-            &::after {
+            &::before {
+                width: 100%;
                 opacity: 1;
+                transform: translateX(0) scale(1);
             }
             .banner__decor {
                 background-color: var.$accent;
                 border-color: var.$accent;
+                &::after {
+                    transform: translate(0, 0) scale(1);
+                    opacity: 1;
+                }
             }
+        }
+        &::before {
+            content: '';
+            display: block;
+            width: 0;
+            height: 151px;
+            background-color: var.$accent;
+            border: 1px solid var.$accent;
+            border-radius: 20px 0 0 20px;
+            position: absolute;
+            top: -1px;
+            right: 1px;
+            z-index: -1;
+            opacity: 0;
+            transform:  translateX(50%) scale(0);
+            transition: var.$tr;
+            box-sizing: border-box;
         }
     }
     &__text {
@@ -245,6 +240,34 @@ p {
         border-radius: 10px;
         box-sizing: border-box;
         transition: var.$tr;
+        &::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 151px;
+            background-image: url(../images/banner-info-decor.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: -1px;
+            right: 0;
+            transition: var.$tr;
+        }
+        &::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 151px;
+            transform: translate(-50%, 0) scale(0);
+            background-image: url(../images/banner-info-decor-hover.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: -1px;
+            right: 0;
+            opacity: 0;
+            transition: var.$tr;
+        }
     }
 }
 
