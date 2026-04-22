@@ -25,6 +25,7 @@ p {
     height: 71px;
     position: fixed;
     top: 0;
+    z-index: 9999;
     &::before {
         content: '';
         display: block;
@@ -64,13 +65,12 @@ p {
             top: 0;
             right: -68px;
         }
-
     }
     &__link {
         color: var.$light;
         font-size: 20px;
         background-color: var.$accent;
-        padding: 19px 45px 0 16px;
+        padding: 20px 45px 0 16px;
         border-radius: 0 10px 0 0;
         position: relative;
         &::before {
@@ -120,7 +120,9 @@ p {
 .button {
     display: block;
     box-sizing: border-box;
-    border: none;
+    border: 1px solid var.$accent;
+    width: 100%;
+    background-color: var.$accent;
     color: var.$light;
     font-family: var.$font;
     font-size: 20px;
@@ -130,6 +132,13 @@ p {
     text-transform: uppercase;
     margin: 0 auto;
     border-radius: 20px;
+    cursor: pointer;
+    transition: var.$tr;
+    @media(hover: hover) {
+        &:hover {
+            background-color: #1F2023;
+        }
+    }
 }
 
 .banner {
@@ -153,35 +162,27 @@ p {
         margin-top: 0;
         margin-bottom: 19px;
     }
-    &__btn {
-        width: 100%;
-        background-color: var.$accent;
+    &__button {
         padding: 54px 0 52px;
-        border: 1px solid var.$accent;
-        transition: var.$tr;
-        cursor: pointer;
-        @media(hover: hover) {
-            &:hover {
-                background-color: #1F2023;
-        }
-        }
     }
     &__info {
         // flex-basis: 649px;
         flex-basis: calc(40.4% - 50px);
     }
     &__item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        height: 149px;
+        height: 151px;
+        padding: 44px 30px 26px 29px;
         border: 1px solid var.$light;
         border-right: none;
         border-radius: 20px 0 0 20px;
         position: relative;
         margin-right: 80px;
-        // box-sizing: border-box;
-        &::after {
+        box-sizing: border-box;
+        transition: var.$tr;
+        & + & {
+            margin-top: 19px;
+        }
+        &::before {
             content: '';
             display: block;
             width: 80px;
@@ -194,25 +195,56 @@ p {
             right: -80px;
             transition: var.$tr;
         }
-        &:hover::after {
+        &::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 151px;
             background-image: url(../images/banner-info-decor-hover.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: -1px;
+            right: -80px;
+            opacity: 0;
+            transition: var.$tr;
         }
-        &:not(:last-child) {
-            margin-bottom: 19px;
-        }
-    }
-    &__decor {
-        position: absolute;
-        top: -1px;
-        right: -80px;
-        padding: 8px 8px 4px 8px;
-        border: 1px solid var.$light;
-        border-radius: 10px;
-        transition: var.$tr;
         &:hover {
             background-color: var.$accent;
             border-color: var.$accent;
+            &::after {
+                opacity: 1;
+            }
+            .banner__decor {
+                background-color: var.$accent;
+                border-color: var.$accent;
+            }
         }
+    }
+    &__text {
+        font-size: 24px;
+        font-weight: 200;
+        line-height: 1.1;
+        span {
+            display: block;
+            font-size: 32px;
+            font-weight: 700;
+            margin-top: 16px;
+        }
+    }
+    &__decor {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -1px;
+        right: -80px;
+        border: 1px solid var.$light;
+        border-radius: 10px;
+        box-sizing: border-box;
+        transition: var.$tr;
     }
 }
 
@@ -246,27 +278,5 @@ p {
             top: -68px;
             right: -21px;
         }
-    }
-}
-
-.banner-item {
-    padding-left: 29px;
-    transition: var.$tr;
-    &__title {
-        font-size: 24px;
-        font-weight: 200;
-        line-height: 1.1;
-        margin-top: 16px;
-    }
-    &__text {
-        display: block;
-        font-size: 32px;
-        font-weight: 700;
-        line-height: 1.1;
-        margin-top: 16px;
-    }
-    &:hover {
-        background-color: var.$accent;
-        border-color: var.$accent;
     }
 }
