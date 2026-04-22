@@ -180,6 +180,7 @@ p {
         border-radius: 20px 0 0 20px;
         position: relative;
         margin-right: 80px;
+        // box-sizing: border-box;
         &::after {
             content: '';
             display: block;
