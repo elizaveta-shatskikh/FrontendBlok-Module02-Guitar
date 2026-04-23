@@ -7,6 +7,7 @@ body {
     color: var.$light;
     font-weight: 400;
     background-color: #1F2023;
+    overflow-x: hidden;
 }
 
 a {
@@ -145,7 +146,7 @@ p {
     display: flex;
     gap: 50px;
     margin-top: 135px;
-    margin-bottom: 65px;
+    margin-bottom: 151px;
     padding: 100px 50px 99px;
     background-image: url(../images/bg-banner.jpg);
     background-repeat: no-repeat;
@@ -153,6 +154,9 @@ p {
     border-radius: 50px;
     &__main {
         // flex-basis: calc(100% - 649px - 50px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
         flex-basis: 59.6%;
     }
     &__title {
@@ -187,13 +191,13 @@ p {
             &::before {
                 width: 100%;
                 opacity: 1;
-                transform: translateX(0) scale(1);
+                transform: scale(1);
             }
             .banner__decor {
                 background-color: var.$accent;
                 border-color: var.$accent;
                 &::after {
-                    transform: translate(0, 0) scale(1);
+                    transform: scale(1);
                     opacity: 1;
                 }
             }
@@ -211,7 +215,8 @@ p {
             right: 1px;
             z-index: -1;
             opacity: 0;
-            transform:  translateX(50%) scale(0);
+            transform: scale(0);
+            transform-origin: top right;
             transition: var.$tr;
             box-sizing: border-box;
         }
@@ -260,7 +265,8 @@ p {
             display: block;
             width: 80px;
             height: 151px;
-            transform: translate(-50%, 0) scale(0);
+            transform: scale(0);
+            transform-origin: top left;
             background-image: url(../images/banner-info-decor-hover.svg);
             background-repeat: no-repeat;
             background-size: contain;
@@ -282,7 +288,6 @@ p {
     padding-left: 30px;
     border: 1px solid var.$light;
     border-radius: 20px;
-    margin-bottom: 136px;
     position: relative;
     &__title {
         font-size: 24px;
@@ -305,5 +310,50 @@ p {
             top: -68px;
             right: -21px;
         }
+    }
+}
+
+.tag {
+    overflow: hidden;
+    margin-bottom: 150px;
+    &__track {
+        display: flex;
+        width: max-content;
+        animation: move-left 20s infinite linear;
+    }
+    &__text {
+        margin-left: 64px;
+        font-size: 24px;
+        font-weight: 200;
+        line-height: 1.1;
+        border: 1px solid var.$gray;
+        border-radius: 50px;
+        padding: 8px 20px 10px 19px;
+        position: relative;
+        &::before {
+            content: '';
+            display: block;
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+            background-color: var.$accent;
+            position: absolute;
+            top: calc(50% - 8px);
+            left: -41px;
+        }
+    }
+    &:hover {
+        .tag__track {
+            animation-play-state: paused;
+        }
+    }
+}
+
+@keyframes move-left {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-50%, 0);
     }
 }
