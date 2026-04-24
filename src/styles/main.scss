@@ -18,6 +18,16 @@ p {
     margin: 0;
 }
 
+.title-h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: 5%;
+    text-transform: uppercase;
+    color: var.$gray;
+}
+
 .header {
     width: 100%;
     display: flex;
@@ -146,7 +156,6 @@ p {
     display: flex;
     gap: 50px;
     margin-top: 135px;
-    margin-bottom: 151px;
     padding: 100px 50px 99px;
     background-image: url(../images/bg-banner.jpg);
     background-repeat: no-repeat;
@@ -314,8 +323,8 @@ p {
 }
 
 .tag {
-    overflow: hidden;
-    margin-bottom: 150px;
+    margin-top: 151px;
+    margin-bottom: 151px;
     &__track {
         display: flex;
         width: max-content;
@@ -355,5 +364,88 @@ p {
     }
     100% {
         transform: translate(-50%, 0);
+    }
+}
+
+.course {
+    display: flex;
+    gap: 70px;
+    &__title {
+        flex-basis: 395px;
+    }
+    &__control {
+        margin-top: 20px;
+    }
+    &__content {
+        flex-basis: calc(100% - 395px - 70px);
+        width: calc(100% - 395px - 70px);
+    }
+}
+
+.swiper-button-prev svg, 
+.swiper-button-next svg {
+    display: none;
+}
+
+.course-control {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &__prev, &__next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 68px;
+        height: 68px;
+        border: 1px solid var.$light;
+        border-radius: 100%;
+        right: inherit;
+        left: inherit;
+        top: inherit;
+        position: inherit;
+        margin-top: 0;
+        transition: var.$tr;
+        &::after {
+            content: '';
+            display: block;
+            width: 49px;
+            height: 24px;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        &:hover {
+            background-color: var.$accent;
+            border-color: var.$accent;
+        }
+    }
+    &__prev {
+        &::after {
+            background-image: url(../images/ui/arrow-prev.svg);
+        }
+    }
+    &__next {
+        &::after {
+            background-image: url(../images/ui/arrow-next.svg);
+        }
+    }
+}
+
+.slider-teacher {
+    margin-bottom: 50px;
+    &__item {
+        background-color: var.$dark;
+        border-radius: 50px;
+        overflow: hidden;
+        padding-top: 69px;
+        position: relative;
+    }
+    &__img {
+        max-width: 435px;
+        width: 100%;
+    }
+    &__name {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
     }
 }
