@@ -6,6 +6,7 @@ body {
     font-family: var.$font;
     color: var.$light;
     font-weight: 400;
+    line-height: 1.1;
     background-color: #1F2023;
     overflow-x: hidden;
 }
@@ -22,7 +23,6 @@ p {
     margin: 0;
     font-weight: 700;
     font-size: 32px;
-    line-height: 1.1;
     letter-spacing: 5%;
     text-transform: uppercase;
     color: var.$gray;
@@ -138,7 +138,6 @@ p {
     font-family: var.$font;
     font-size: 20px;
     font-weight: 600;
-    line-height: 1.1;
     letter-spacing: 5%;
     text-transform: uppercase;
     margin: 0 auto;
@@ -171,7 +170,6 @@ p {
     &__title {
         font-size: 64px;
         font-weight: 700; 
-        line-height: 1.1;
         margin-top: 0;
         margin-bottom: 19px;
     }
@@ -233,7 +231,6 @@ p {
     &__text {
         font-size: 24px;
         font-weight: 200;
-        line-height: 1.1;
         span {
             display: block;
             font-size: 32px;
@@ -301,7 +298,6 @@ p {
     &__title {
         font-size: 24px;
         font-weight: 400;
-        line-height: 1.1;
         letter-spacing: 5%;
         text-transform: uppercase;
         margin-top: 0;
@@ -334,7 +330,6 @@ p {
         margin-left: 64px;
         font-size: 24px;
         font-weight: 200;
-        line-height: 1.1;
         border: 1px solid var.$gray;
         border-radius: 50px;
         padding: 8px 20px 10px 19px;
@@ -397,14 +392,16 @@ p {
         justify-content: center;
         width: 68px;
         height: 68px;
+        background-color: transparent;
         border: 1px solid var.$light;
         border-radius: 100%;
-        right: inherit;
-        left: inherit;
-        top: inherit;
         position: inherit;
         margin-top: 0;
         transition: var.$tr;
+        &:hover {
+            background-color: var.$accent;
+            border-color: var.$accent;
+        }
         &::after {
             content: '';
             display: block;
@@ -412,10 +409,6 @@ p {
             height: 24px;
             background-repeat: no-repeat;
             background-size: contain;
-        }
-        &:hover {
-            background-color: var.$accent;
-            border-color: var.$accent;
         }
     }
     &__prev {
@@ -433,19 +426,57 @@ p {
 .slider-teacher {
     margin-bottom: 50px;
     &__item {
+        height: 707px;
         background-color: var.$dark;
+        border: 1px solid var.$dark; 
         border-radius: 50px;
         overflow: hidden;
-        padding-top: 69px;
         position: relative;
+        transition: var.$tr;
+        &:hover {
+            border-color : var.$accent;
+            .slider-teacher__name,
+            .slider-teacher__grid {
+                opacity: 1;
+            }
+        }
+    }
+    &__grid {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: var.$tr;
     }
     &__img {
-        max-width: 435px;
+        // max-width: 435px;
         width: 100%;
+        height: 637px;
+        object-fit: cover;
+        position: absolute;
+        bottom: 0;
     }
     &__name {
+        width: 100%;
         position: absolute;
-        bottom: 30px;
-        left: 30px;
+        bottom: 31px;
+        left: 28px;
+        font-size: 24px;
+        opacity: 0;
+        transition: var.$tr;
+        z-index: 1;
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 637px;
+            background: linear-gradient(42deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0) 59.08%);
+            background-repeat: no-repeat;
+            position: absolute;
+            left: -28px;
+            bottom: -31px;
+            z-index: -1;
+        }
     }
 }
