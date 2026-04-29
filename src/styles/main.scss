@@ -129,19 +129,15 @@ p {
 }
 
 .button {
-    display: block;
-    box-sizing: border-box;
-    border: 1px solid var.$accent;
-    width: 100%;
-    background-color: var.$accent;
     color: var.$light;
-    font-family: var.$font;
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 5%;
     text-transform: uppercase;
-    margin: 0 auto;
+    background-color: var.$accent;
+    border: 1px solid var.$accent;
     border-radius: var.$br-min;
+    padding: 54px 0 52px;
     cursor: pointer;
     transition: var.$tr;
     @media(hover: hover) {
@@ -173,7 +169,9 @@ p {
         margin-top: 0;
         margin-bottom: 19px;
     }
-    &__button {
+    &__btn {
+        display: block;
+        width: 100%;
         padding: 54px 0 52px;
     }
     &__info {
@@ -551,17 +549,18 @@ p {
     border-radius: var.$br-max;
     background: linear-gradient(180deg, #1f2023 0%, #7027e2 50%, #1f2023 100%);
     padding: 150px 0;
-    margin: 150px 0;
+    margin: 150px auto;
+    width: min(1920px, 100%);
     &__list {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
         gap: 30px;
         margin-top: 49px;
     }
     &__item {
         background-color: var.$light;
         border-radius: var.$br-max;
-        padding: 30px 30px 30px 30px;
-        flex-basis: 435px;
+        padding: 30px;
     }
     &__icon {
         margin-bottom: 17px;
@@ -570,5 +569,49 @@ p {
         font-size: 16px;
         color: var.$dark;
         line-height: 1.5;
+    }
+}
+
+.result {
+    margin-bottom: 150px;
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+    }
+    &__item {
+        padding: 30px;
+        background-color: var.$light;
+        border-radius: var.$br-min;
+        &:not(:last-child) {
+            padding-right: 50px;
+        }
+        &._subgrid {
+            grid-column: 2 / 5;
+            display: grid;
+            grid-template-columns: subgrid;
+        }
+    }
+    &__text {
+        font-size: 16px;
+        color: var.$dark;
+        line-height: 1.5;
+        span {
+            display: block;
+            max-width: 63px;
+            // text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            color: var.$light;
+            background-color: var.$accent;
+            border-radius: 10px;
+            padding: 4px 10px 5px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+    }
+    &__btn {
+        grid-column: 2 / 5;
     }
 }
