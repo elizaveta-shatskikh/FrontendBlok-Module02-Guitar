@@ -365,6 +365,7 @@ p {
 .course {
     display: flex;
     gap: 70px;
+    margin-bottom: 150px;
     &__title {
         flex-basis: 395px;
     }
@@ -426,15 +427,16 @@ p {
 .slider-teacher {
     margin-bottom: 50px;
     &__item {
-        height: 707px;
+        max-width: 431px;
+        height: 702px;
         background-color: var.$dark;
-        border: 1px solid var.$dark; 
+        border: 2px solid var.$dark; 
         border-radius: 50px;
         overflow: hidden;
         position: relative;
         transition: var.$tr;
         &:hover {
-            border-color : var.$accent;
+            border: 2px solid var.$accent;
             .slider-teacher__name,
             .slider-teacher__grid {
                 opacity: 1;
@@ -450,9 +452,8 @@ p {
         transition: var.$tr;
     }
     &__img {
-        // max-width: 435px;
         width: 100%;
-        height: 637px;
+        height: 635px;
         object-fit: cover;
         position: absolute;
         bottom: 0;
@@ -460,8 +461,8 @@ p {
     &__name {
         width: 100%;
         position: absolute;
-        bottom: 31px;
-        left: 28px;
+        bottom: 28px;
+        left: 27px;
         font-size: 24px;
         opacity: 0;
         transition: var.$tr;
@@ -477,6 +478,70 @@ p {
             left: -28px;
             bottom: -31px;
             z-index: -1;
+        }
+    }
+}
+
+.accordion {
+    width: 100%;
+    &__btn {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: none;
+        border-radius: 20px;
+        font-size: 32px;
+        color: var.$accent;
+        background-color: var.$light;
+        padding: 21px 25px 19px 29px;
+        cursor: pointer;
+        &::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-image: url(../images/ui/minus.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+        &.active {
+            &::after {
+                background-image: url(../images/ui/plus.svg);
+            }
+            .accordion__panel {
+                margin-top: 0;
+                padding: 0;
+            }
+        }
+    }
+    &__panel {
+        margin-top: 24px;
+        background-color: var.$light;
+        border-radius: 20px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 29px;
+        margin: 0;
+        padding: 30px 50px 14px 49px;
+        list-style-type: none;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 24px;
+        font-weight: 300;
+        color: var.$dark;
+        border-bottom: 1px solid var.$gray;
+        padding-bottom: 15px;
+        &::before {
+            content: '—';
         }
     }
 }
