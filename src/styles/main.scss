@@ -123,6 +123,21 @@ p {
     }
 }
 
+.logo {
+    &._max {
+        svg {
+            width: 400px;
+            height: 31px;
+        }
+    }
+    &._min {
+        svg {
+            width: 296px;
+            height: 22px;
+        }
+    }
+}
+
 .container {
     width: 100%;
     max-width: 1860px;
@@ -576,7 +591,6 @@ p {
 }
 
 .result {
-    margin-bottom: 150px;
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -624,6 +638,7 @@ p {
 }
 
 .areas {
+    margin-top: 150px;
     margin-bottom: 150px;
     &__list {
         margin-top: 50px;
@@ -640,8 +655,9 @@ p {
         border-radius: 0;
         transition: var.$tr;
         position: relative;
-        &:not(:first-child) {
-            border-top: 1px solid var.$accent;
+        &:not(:last-child) {
+            border-bottom: 1px solid var.$accent;
+            margin-bottom: 29px;
             // padding-top: 59px;
         }
         &:hover {
@@ -655,9 +671,9 @@ p {
                 transform: scale(1);
             }
         }
-        &:hover + & {
-            border-color: transparent;
-        }
+        // &:hover + & {
+        //     border-color: transparent;
+        // }
         &::after {
             content: '';
             display: block;
@@ -674,9 +690,6 @@ p {
             background-repeat: no-repeat;
             background-size: contain;
             position: absolute;
-            left: 0;
-            right: 0;
-            margin: 0 auto;
             opacity: 0;
             z-index: 1;
             transform: scale(0);
@@ -688,7 +701,7 @@ p {
                 height: 364px;
                 background-image: url(../images/areas/acoustic.png);
                 top: calc(50% - 225px);
-                left: 276px;
+                left: 769px;
             }
         }
         &._drums {
@@ -697,7 +710,7 @@ p {
                 height: 474px;
                 background-image: url(../images/areas/drums.png);
                 top: calc(50% - 230px);
-                left: 80px;
+                left: 718px;               
             }
         }
         &._violin {
@@ -706,7 +719,7 @@ p {
                 height: 492px;
                 background-image: url(../images/areas/violin.png);
                 top: calc(50% - 262px);
-                left: 175px;
+                left: 718px;
             }
         }
         &._bas-guitar {
@@ -715,7 +728,98 @@ p {
                 height: 439px;
                 background-image: url(../images/areas/bas-guitar.png);
                 top: calc(50% - 236px);
-                left: 192px;
+                left: 719px;
+            }
+        }
+    }
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 50px);
+    // gap: 12px;
+    background-color: var.$dark;
+    border-radius: var.$br-min;
+    padding: 30px 50px;
+    margin-bottom: 30px;
+    &__social {
+        align-self: center;
+        justify-self: end;
+    }
+    &__info {
+        align-self: end;
+    }
+    &__copy {
+        align-self: end;
+        justify-self: end;
+        margin-bottom: 6px;
+    }
+    &__text {
+        line-height: 1.5;
+    }
+    &__link {
+        color: var.$accent;
+        font-weight: 700;
+        text-decoration: underline;
+        margin-left: 5px;
+        transition: var.$tr;
+        &:hover {
+            color: var.$light;
+        }
+    }
+}
+
+.social {
+    display: flex;
+    gap: 11px;
+    margin-right: 3px;
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background-color: var.$light;
+        border-radius: 10px;
+        transition: var.$tr;
+        &:hover {
+            background-color: var.$accent;
+            &::after {
+                background-color: var.$light;
+            }
+        }
+        &::after {
+            content: '';
+            display: block;
+            background-color: var.$accent;
+            mask: center center / 100% no-repeat;
+            -webkit-mask: center center / 100% no-repeat;
+            transition: var.$tr;
+        }
+        &._wa {
+            &::after {
+                width: 28px;
+                height: 28px;
+                mask-image: url(../images/social/wa.svg);
+                -webkit-mask-image: url(../images/social/wa.svg);
+            }
+
+        }
+        &._vk {
+            &::after {
+                width: 31.25px;
+                height: 18.75px;
+                mask-image: url(../images/social/vk.svg);
+                -webkit-mask-image: url(../images/social/vk.svg);
+            }
+        }
+        &._tg {
+            &::after {
+                width: 25px;
+                height: 21.88px;
+                mask-image: url(../images/social/tg.svg);
+                -webkit-mask-image: url(../images/social/tg.svg);
             }
         }
     }
