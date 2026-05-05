@@ -58,6 +58,9 @@ p {
         padding: 20px 41px 0 45px;
         border-radius: 10px 0 0 0;
         position: relative;
+        @media (max-width: var.$r_desk) {
+            padding: 20px 40px 0 20px;
+        }
         &::before {
             content: '';
             display: block;
@@ -81,13 +84,14 @@ p {
             right: -68px;
         }
     }
-    &__link {
-        color: var.$light;
-        font-size: 20px;
-        background-color: var.$accent;
+    &__info {
         padding: 20px 45px 0 16px;
         border-radius: 0 10px 0 0;
+        background-color: var.$accent;
         position: relative;
+        @media (max-width: var.$r_desk) {
+            padding: 20px 20px 0 24px;
+        }
         &::before {
             content: '';
             display: block;
@@ -110,15 +114,18 @@ p {
             top: 0;
             left: -68px;
         }
-        &:hover {
-            color: var.$gray;
-        }
-        & > span {
-            border-bottom: 1px solid var.$light;
-            padding-bottom: 5px;
-        }
-        & > span:hover {
-            border-color: var.$gray;
+    }
+    &__link {
+        color: var.$light;
+        font-size: 20px;
+        border-bottom: 1px solid var.$light;
+        padding-bottom: 5px;
+        transition: var.$tr;
+        @media(hover: hover) {
+            &:hover {
+                color: var.$gray;
+                border-color: var.$accent;
+            }
         }
     }
 }
@@ -140,11 +147,15 @@ p {
 
 .container {
     width: 100%;
-    max-width: 1860px;
+    max-width: 1920px;
     margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 45px;
+    padding-right: 45px;
     box-sizing: border-box;
+    @media (max-width: var.$r_desk) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 .button {
@@ -209,18 +220,20 @@ p {
         & + & {
             margin-top: 19px;
         }
-        &:hover {
-            &::before {
-                width: 100%;
-                opacity: 1;
-                transform: scale(1);
-            }
-            .banner__decor {
-                background-color: var.$accent;
-                border-color: var.$accent;
-                &::after {
-                    transform: scale(1);
+        @media(hover: hover) {
+            &:hover {
+                &::before {
+                    width: 100%;
                     opacity: 1;
+                    transform: scale(1);
+                }
+                .banner__decor {
+                    background-color: var.$accent;
+                    border-color: var.$accent;
+                    &::after {
+                        transform: scale(1);
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -361,9 +374,11 @@ p {
             left: -41px;
         }
     }
-    &:hover {
-        .tag__track {
-            animation-play-state: paused;
+    @media(hover: hover) {
+        &:hover {
+            .tag__track {
+                animation-play-state: paused;
+            }
         }
     }
 }
@@ -416,9 +431,11 @@ p {
         position: inherit;
         margin-top: 0;
         transition: var.$tr;
-        &:hover {
-            background-color: var.$accent;
-            border-color: var.$accent;
+        @media(hover: hover) {
+            &:hover {
+                background-color: var.$accent;
+                border-color: var.$accent;
+            }
         }
         &::after {
             content: '';
@@ -451,11 +468,13 @@ p {
         overflow: hidden;
         position: relative;
         transition: var.$tr;
-        &:hover {
-            border: 2px solid var.$accent;
-            .slider-teacher__name,
-            .slider-teacher__grid {
-                opacity: 1;
+        @media(hover: hover) {
+            &:hover {
+                border: 2px solid var.$accent;
+                .slider-teacher__name,
+                .slider-teacher__grid {
+                    opacity: 1;
+                }
             }
         }
     }
@@ -660,20 +679,19 @@ p {
             margin-bottom: 29px;
             // padding-top: 59px;
         }
-        &:hover {
-            border-radius: 10px;  
-            background-color: var.$accent;
-            &::after {
-                transform: rotate(45deg);
-            }
-            &::before {
-                opacity: 1;
-                transform: scale(1);
+        @media(hover: hover) {
+            &:hover {
+                border-radius: 10px;  
+                background-color: var.$accent;
+                &::after {
+                    transform: rotate(45deg);
+                }
+                &::before {
+                    opacity: 1;
+                    transform: scale(1);
+                }
             }
         }
-        // &:hover + & {
-        //     border-color: transparent;
-        // }
         &::after {
             content: '';
             display: block;
@@ -736,44 +754,46 @@ p {
 
 .footer {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 50px);
-    // gap: 12px;
+    grid-template-columns: 1fr 450px;
+    gap: 8px 20px;
     background-color: var.$dark;
     border-radius: var.$br-min;
     padding: 30px 50px;
     margin-bottom: 30px;
     &__social {
-        align-self: center;
         justify-self: end;
-    }
-    &__info {
-        align-self: end;
+        margin-right: 3px;
     }
     &__copy {
+        text-align: right;
         align-self: end;
-        justify-self: end;
         margin-bottom: 6px;
     }
     &__text {
         line-height: 1.5;
+        // & + & {
+        //     // margin-top: 6px;
+        // }
     }
     &__link {
         color: var.$accent;
         font-weight: 700;
-        text-decoration: underline;
         margin-left: 5px;
+        box-shadow: 0 4px 0 -3px var.$accent;
         transition: var.$tr;
-        &:hover {
-            color: var.$light;
+        @media(hover: hover) {
+            &:hover {
+                box-shadow: 0 4px 0 -3px transparent;
+        }
         }
     }
 }
 
 .social {
     display: flex;
+    align-items: center;
+    justify-content: end;
     gap: 11px;
-    margin-right: 3px;
     &__link {
         display: flex;
         align-items: center;
@@ -783,10 +803,12 @@ p {
         background-color: var.$light;
         border-radius: 10px;
         transition: var.$tr;
-        &:hover {
-            background-color: var.$accent;
-            &::after {
-                background-color: var.$light;
+        @media(hover: hover) {
+            &:hover {
+                background-color: var.$accent;
+                &::after {
+                    background-color: var.$light;
+                }
             }
         }
         &::after {
