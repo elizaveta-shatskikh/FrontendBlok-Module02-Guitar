@@ -175,6 +175,146 @@ p {
     }
 }
 
+// .banner {
+//     display: flex;
+//     gap: 50px;
+//     margin-top: 135px;
+//     padding: 100px 50px 99px;
+//     background-image: url(../images/bg-banner.jpg);
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     border-radius: var.$br-max;
+//     &__main {
+//         // flex-basis: calc(100% - 649px - 50px);
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: space-between;
+//         flex-basis: 59.6%;
+//     }
+//     &__title {
+//         font-size: 64px;
+//         font-weight: 700; 
+//         margin-top: 0;
+//         margin-bottom: 19px;
+//     }
+//     &__btn {
+//         display: block;
+//         width: 100%;
+//         padding: 54px 0 52px;
+//     }
+//     &__info {
+//         // flex-basis: 649px;
+//         flex-basis: calc(40.4% - 50px);
+//     }
+//     &__item {
+//         height: 151px;
+//         padding: 44px 30px 26px 29px;
+//         border: 1px solid var.$light;
+//         border-right: none;
+//         border-radius: 20px 0 0 20px;
+//         position: relative;
+//         z-index: 1;
+//         margin-right: 80px;
+//         box-sizing: border-box;
+//         transition: var.$tr;
+//         & + & {
+//             margin-top: 19px;
+//         }
+//         @media(hover: hover) {
+//             &:hover {
+//                 &::before {
+//                     width: 100%;
+//                     opacity: 1;
+//                     transform: scale(1);
+//                 }
+//                 .banner__decor {
+//                     background-color: var.$accent;
+//                     border-color: var.$accent;
+//                     &::after {
+//                         transform: scale(1);
+//                         opacity: 1;
+//                     }
+//                 }
+//             }
+//         }
+//         &::before {
+//             content: '';
+//             display: block;
+//             width: 0;
+//             height: 151px;
+//             background-color: var.$accent;
+//             border: 1px solid var.$accent;
+//             border-radius: 20px 0 0 20px;
+//             position: absolute;
+//             top: -1px;
+//             right: 1px;
+//             z-index: -1;
+//             opacity: 0;
+//             transform: scale(0);
+//             transform-origin: top right;
+//             transition: var.$tr;
+//             box-sizing: border-box;
+//         }
+//     }
+//     &__text {
+//         font-size: 24px;
+//         font-weight: 200;
+//         span {
+//             display: block;
+//             font-size: 32px;
+//             font-weight: 700;
+//             margin-top: 16px;
+//         }
+//     }
+//     &__decor {
+//         width: 50px;
+//         height: 50px;
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//         position: absolute;
+//         top: -1px;
+//         right: -80px;
+//         border: 1px solid var.$light;
+//         border-radius: 10px;
+//         box-sizing: border-box;
+//         transition: var.$tr;
+//         &::before {
+//             content: '';
+//             display: block;
+//             width: 80px;
+//             height: 151px;
+//             background-image: url(../images/banner-info-decor.svg);
+//             background-repeat: no-repeat;
+//             background-size: contain;
+//             position: absolute;
+//             // top: -1px;
+//             top: -0.5px;
+//             // right: 0;
+//             right: 1px;
+//             transition: var.$tr;
+//         }
+//         &::after {
+//             content: '';
+//             display: block;
+//             width: 80px;
+//             height: 151px;
+//             transform: scale(0);
+//             transform-origin: top left;
+//             background-image: url(../images/banner-info-decor-hover.svg);
+//             background-repeat: no-repeat;
+//             background-size: contain;
+//             position: absolute;
+//             // top: -1px;
+//             top: -0.5px;
+//             // right: 0;
+//             right: 1px;
+//             opacity: 0;
+//             transition: var.$tr;
+//         }
+//     }
+// }
+
 .banner {
     display: flex;
     gap: 50px;
@@ -207,14 +347,13 @@ p {
         flex-basis: calc(40.4% - 50px);
     }
     &__item {
+        width: 100%;
+        overflow: hidden;
         height: 151px;
         padding: 44px 30px 26px 29px;
-        border: 1px solid var.$light;
         border-right: none;
-        border-radius: 20px 0 0 20px;
         position: relative;
         z-index: 1;
-        margin-right: 80px;
         box-sizing: border-box;
         transition: var.$tr;
         & + & {
@@ -223,6 +362,9 @@ p {
         @media(hover: hover) {
             &:hover {
                 &::before {
+                    background-color: var.$accent;
+                }
+                &::after {
                     width: 100%;
                     opacity: 1;
                     transform: scale(1);
@@ -240,18 +382,46 @@ p {
         &::before {
             content: '';
             display: block;
+            background-color: var.$light;
+            mask-image: url(../images/banner-info.svg);
+            -webkit-mask-image: url(../images/banner-info.svg);
+            mask-size: 100% 151px;
+            -webkit-mask-size: 100% 151px;
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            transition: var.$tr;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        &::after {
+            content: '';
+            display: block;
             width: 0;
             height: 151px;
             background-color: var.$accent;
-            border: 1px solid var.$accent;
-            border-radius: 20px 0 0 20px;
+            mask-image: url(../images/banner-info-hover.svg);
+            -webkit-mask-image: url(../images/banner-info-hover.svg);
+            mask-size: 100% 151px;
+            -webkit-mask-size: 100% 151px;
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            transition: var.$tr;
             position: absolute;
-            top: -1px;
-            right: 1px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             z-index: -1;
             opacity: 0;
             transform: scale(0);
-            transform-origin: top right;
+            transform-origin: 220% 0%;
             transition: var.$tr;
             box-sizing: border-box;
         }
@@ -259,7 +429,7 @@ p {
     &__text {
         font-size: 24px;
         font-weight: 200;
-        span {
+            span {
             display: block;
             font-size: 32px;
             font-weight: 700;
@@ -273,45 +443,12 @@ p {
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: -1px;
-        right: -80px;
+        top: 0;
+        right: 0;
         border: 1px solid var.$light;
         border-radius: 10px;
         box-sizing: border-box;
         transition: var.$tr;
-        &::before {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 151px;
-            background-image: url(../images/banner-info-decor.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: absolute;
-            // top: -1px;
-            top: -0.5px;
-            // right: 0;
-            right: 1px;
-            transition: var.$tr;
-        }
-        &::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 151px;
-            transform: scale(0);
-            transform-origin: top left;
-            background-image: url(../images/banner-info-decor-hover.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            position: absolute;
-            // top: -1px;
-            top: -0.5px;
-            // right: 0;
-            right: 1px;
-            opacity: 0;
-            transition: var.$tr;
-        }
     }
 }
 
@@ -535,13 +672,13 @@ p {
             display: block;
             width: 50px;
             height: 50px;
-            background-image: url(../images/ui/minus.svg);
+            background-image: url(../images/ui/plus.svg);
             background-repeat: no-repeat;
             background-size: contain;
         }
         &.active {
             &::after {
-                background-image: url(../images/ui/plus.svg);
+                background-image: url(../images/ui/minus.svg);
             }
             .accordion__panel {
                 margin-top: 0;
@@ -826,7 +963,6 @@ p {
                 mask-image: url(../images/social/wa.svg);
                 -webkit-mask-image: url(../images/social/wa.svg);
             }
-
         }
         &._vk {
             &::after {
