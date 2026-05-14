@@ -41,6 +41,9 @@ p {
     position: fixed;
     top: 0;
     z-index: 9999;
+    @media (max-width: var.$r_tab) {
+        height: 64px;
+    }
     &::before {
         content: '';
         display: block;
@@ -52,6 +55,9 @@ p {
         top: 0;
         left: 0;
         z-index: -1;
+        @media (max-width: var.$r_tab) {
+            top: -2px;
+        }
     }
     &__logo {
         background-color: var.$accent;
@@ -60,6 +66,9 @@ p {
         position: relative;
         @media (max-width: var.$r_desk) {
             padding: 20px 40px 0 20px;
+        }
+        @media (max-width: var.$r_tab) {
+            padding: 16px 26px 0 15px;
         }
         &::before {
             content: '';
@@ -82,6 +91,12 @@ p {
             position: absolute;
             top: 0;
             right: -68px;
+            @media (max-width: var.$r_tab) {
+                height: 64px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                right: -67px;
+            }
         }
     }
     &__info {
@@ -90,7 +105,10 @@ p {
         background-color: var.$accent;
         position: relative;
         @media (max-width: var.$r_desk) {
-            padding: 20px 20px 0 24px;
+            padding: 21px 20px 0 24px;
+        }
+        @media (max-width: var.$r_tab) {
+            padding: 21px 16px 0 18px;
         }
         &::before {
             content: '';
@@ -113,6 +131,12 @@ p {
             position: absolute;
             top: 0;
             left: -68px;
+            @media (max-width: var.$r_tab) {
+                height: 64px;
+                background-size: contain;
+                background-repeat: no-repeat;
+                left: -57px;
+            }
         }
     }
     &__link {
@@ -127,6 +151,9 @@ p {
                 border-color: var.$accent;
             }
         }
+        @media (max-width: var.$r_tab) {
+            font-size: 16px;
+        }
     }
 }
 
@@ -135,6 +162,9 @@ p {
         svg {
             width: 400px;
             height: 31px;
+            @media (max-width: var.$r_desk) {
+                width: clamp(300px, 39vw, 400px);
+            }
         }
     }
     &._min {
@@ -186,6 +216,10 @@ p {
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: var.$br-max;
+    @media (max-width: var.$r_desk_full) {
+        flex-direction: column;
+        padding: 80px 40px;
+    }
     &__main {
         // flex-basis: calc(100% - 649px - 50px);
         display: flex;
@@ -198,19 +232,31 @@ p {
         font-weight: 700; 
         margin-top: 0;
         margin-bottom: 19px;
+        @media (max-width: var.$r_desk_full) {
+            font-size: clamp(50px, 4vw + 1rem, 64px);
+            // margin-bottom: 5px;
+        }
     }
     &__btn {
         display: block;
         width: 100%;
         padding: 54px 0 52px;
+        @media (max-width: var.$r_desk_full) {
+            margin-top: 50px;
+        }
     }
     &__info {
         // flex-basis: 649px;
         flex-basis: calc(40.4% - 50px);
+        @media (max-width: var.$r_desk_full) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
     }
     &__item {
         height: 151px;
-        padding: 44px 30px 26px 29px;
+        padding: 44px 0 26px 29px;
         border: 1px solid var.$light;
         border-right: none;
         border-radius: 20px 0 0 20px;
@@ -219,11 +265,27 @@ p {
         margin-right: 80px;
         box-sizing: border-box;
         transition: var.$tr;
+        @media (max-width: (var.$r_desk - 24px)) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100px;
+            padding: 25px 30px 25px 100px;
+            margin-right: 0;
+            border-radius: var.$br-min;
+            border-right: 1px solid var.$light;
+        }
         & + & {
             margin-top: 19px;
+            @media (max-width: var.$r_desk_full) {
+                margin-top: 0;
+            }
         }
         @media(hover: hover) {
             &:hover {
+                @media (max-width: (var.$r_desk - 24px)) {
+                    border-color: var.$accent;
+                }
                 &::before {
                     width: 100%;
                     opacity: 1;
@@ -232,6 +294,9 @@ p {
                 .banner__decor {
                     background-color: var.$accent;
                     border-color: var.$accent;
+                    @media (max-width: (var.$r_desk - 24px)) {
+                        border-color: var.$light;
+                    }
                     &::after {
                         transform: scale(1);
                         opacity: 1;
@@ -256,16 +321,31 @@ p {
             transform-origin: top right;
             transition: var.$tr;
             box-sizing: border-box;
+            @media (max-width: (var.$r_desk - 24px)) {
+                border-radius: var.$br-min;
+                transform-origin: left center;
+                height: 100px;
+                // top: inherit;
+            }
         }
     }
     &__text {
         font-size: 24px;
         font-weight: 200;
+        @media (max-width: (var.$r_desk - 24px)) {
+            // font-size: clamp(18px, 0.8vw + 1rem, 24px);
+            font-size: 18px;
+        }
         span {
             display: block;
             font-size: 32px;
             font-weight: 700;
             margin-top: 16px;
+            @media (max-width: (var.$r_desk - 24px)) {
+                // font-size: clamp(20px, 0.8vw + 1rem, 32px);
+                font-size: 20px;
+                margin-top: 10px;
+            }
         }
     }
     &__decor {
@@ -281,6 +361,11 @@ p {
         border-radius: 10px;
         box-sizing: border-box;
         transition: var.$tr;
+        @media (max-width: (var.$r_desk - 24px)) {
+            top: calc(50% - 25px);
+            right: inherit;
+            left: 30px;
+        }
         &::before {
             content: '';
             display: block;
@@ -295,6 +380,9 @@ p {
             // right: 0;
             right: 1px;
             transition: var.$tr;
+            @media (max-width: (var.$r_desk - 24px)) {
+                display: none;
+            }
         }
         &::after {
             content: '';
@@ -313,6 +401,9 @@ p {
             right: 1px;
             opacity: 0;
             transition: var.$tr;
+            @media (max-width: (var.$r_desk - 24px)) {
+                display: none;
+            }
         }
     }
 }
@@ -617,13 +708,19 @@ p {
 // }
 
 .banner-box {
-    padding-top: 30px;
-    padding-right: 365px;
-    padding-bottom: 28px;
-    padding-left: 30px;
+    padding: 30px 365px 28px 30px;
     border: 1px solid var.$light;
     border-radius: var.$br-min;
     position: relative;
+    @media (max-width: var.$r_desk_full_over) {
+        padding-right: clamp(200px, 20vw, 365px);
+    }
+    @media (max-width: var.$r_desk_full) {
+        padding-right: 365px;
+    }
+    @media (max-width: var.$r_desk) {
+        padding-right: 340px;
+    }
     &__title {
         font-size: 24px;
         font-weight: 400;
@@ -635,6 +732,9 @@ p {
     &__text {
         font-size: 20px;
         line-height: 1.5;
+        @media (max-width: var.$r_desk_full) {
+            max-width: 572px;
+        }
     }
     &__img {
         width: 100%;
@@ -643,6 +743,21 @@ p {
             max-width: 337px;
             top: -68px;
             right: -21px;
+            @media (max-width: var.$r_desk_full_over) {
+                max-width: clamp(317px, 22vw, 337px);
+                top: inherit;
+                bottom: -68px;
+            }
+            @media (max-width: var.$r_desk_full) {
+                max-width: 337px;
+                top: -68px;
+                bottom: inherit;
+            }
+            @media (max-width: var.$r_desk) {
+                max-width: 317px;
+                top: -64px;
+                right: -13px;
+            }
         }
     }
 }
@@ -650,6 +765,10 @@ p {
 .tag {
     margin-top: 151px;
     margin-bottom: 151px;
+    @media (max-width: var.$r_desk) {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
     &__track {
         display: flex;
         width: max-content;
