@@ -186,6 +186,10 @@ p {
         padding-left: 20px;
         padding-right: 20px;
     }
+    @media (max-width: var.$r_tab) {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
 }
 
 .button {
@@ -220,6 +224,9 @@ p {
         flex-direction: column;
         padding: 80px 40px;
     }
+    @media (max-width: (var.$r_desk - 24px)) {
+        padding: 50px 30px;
+    }
     &__main {
         // flex-basis: calc(100% - 649px - 50px);
         display: flex;
@@ -236,6 +243,12 @@ p {
             font-size: clamp(50px, 4vw + 1rem, 64px);
             // margin-bottom: 5px;
         }
+        @media (max-width: (var.$r_desk - 174px)) {
+            font-size: clamp(40px, 5.2vw, 50px);
+        }
+        @media (max-width: var.$r_tab) {
+            margin-bottom: 20px;
+        }
     }
     &__btn {
         display: block;
@@ -243,6 +256,12 @@ p {
         padding: 54px 0 52px;
         @media (max-width: var.$r_desk_full) {
             margin-top: 50px;
+        }
+        @media (max-width: (var.$r_desk - 24px)) {
+            padding: 44px 0 41px;
+        }
+        @media (max-width: var.$r_tab) {
+            margin-top: 30px;
         }
     }
     &__info {
@@ -269,8 +288,8 @@ p {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 100px;
-            padding: 25px 30px 25px 100px;
+            height: inherit;
+            padding: 24px 10px 23px 100px;
             margin-right: 0;
             border-radius: var.$br-min;
             border-right: 1px solid var.$light;
@@ -325,7 +344,7 @@ p {
                 border-radius: var.$br-min;
                 transform-origin: left center;
                 height: 100px;
-                // top: inherit;
+                right: 0;
             }
         }
     }
@@ -333,7 +352,6 @@ p {
         font-size: 24px;
         font-weight: 200;
         @media (max-width: (var.$r_desk - 24px)) {
-            // font-size: clamp(18px, 0.8vw + 1rem, 24px);
             font-size: 18px;
         }
         span {
@@ -342,7 +360,6 @@ p {
             font-weight: 700;
             margin-top: 16px;
             @media (max-width: (var.$r_desk - 24px)) {
-                // font-size: clamp(20px, 0.8vw + 1rem, 32px);
                 font-size: 20px;
                 margin-top: 10px;
             }
@@ -721,6 +738,9 @@ p {
     @media (max-width: var.$r_desk) {
         padding-right: 340px;
     }
+    @media (max-width: (var.$r_desk - 24px)) {
+        padding-right: 250px;
+    }
     &__title {
         font-size: 24px;
         font-weight: 400;
@@ -758,6 +778,15 @@ p {
                 top: -64px;
                 right: -13px;
             }
+            @media (max-width: (var.$r_desk - 24px)) {
+                max-width: 252px;
+                top: -44px;
+                right: -13px;
+            }
+            @media (max-width: var.$r_tab) {
+                top: -51px;
+                right: 5px;
+            }
         }
     }
 }
@@ -768,6 +797,10 @@ p {
     @media (max-width: var.$r_desk) {
         margin-top: 100px;
         margin-bottom: 100px;
+    }
+    @media (max-width: var.$r_tab) {
+        margin-top: 80px;
+        margin-bottom: 80px;
     }
     &__track {
         display: flex;
@@ -815,15 +848,31 @@ p {
 .course {
     display: flex;
     gap: 70px;
+    @media (max-width: var.$r_desk_full) {
+        flex-direction: column;
+        gap: 30px;
+    }
     &__title {
         flex-basis: 395px;
+        @media (max-width: var.$r_desk_full) {
+            flex-basis: auto;
+            display: flex;
+            justify-content: space-between;
+        }
     }
     &__control {
         margin-top: 20px;
+        @media (max-width: var.$r_desk_full) {
+            margin-top: 0;
+        }
     }
     &__content {
         flex-basis: calc(100% - 395px - 70px);
         width: calc(100% - 395px - 70px);
+        @media (max-width: var.$r_desk_full) {
+            flex-basis: auto;
+            width: 100%;
+        }
     }
     &__schedule {
         margin-top: 50px;
@@ -851,6 +900,10 @@ p {
         position: inherit;
         margin-top: 0;
         transition: var.$tr;
+        @media (max-width: var.$r_desk_full) {
+            width: 48px;
+            height: 48px;
+        }
         @media(hover: hover) {
             &:hover {
                 background-color: var.$accent;
@@ -880,15 +933,23 @@ p {
 
 .slider-teacher {
     &__item {
-        max-width: 431px;
-        height: 702px;
+        max-width: 435px;
+        height: min(707px, 37vw);
         background-color: var.$dark;
-        border: 2px solid var.$dark; 
+        border: 2px solid var.$accent; 
         border-radius: var.$br-max;
         overflow: hidden;
+        box-sizing: border-box;
         position: relative;
         transition: var.$tr;
+        @media (max-width: var.$r_desk_full) {
+            max-width: 450px;
+            height: min(750px, 49vw);
+        }
+        @media (max-width: (var.$r_desk - 24px)) {
+        }
         @media(hover: hover) {
+            border: 2px solid var.$dark;
             &:hover {
                 border: 2px solid var.$accent;
                 .slider-teacher__name,
@@ -905,23 +966,43 @@ p {
         transform: translate(-50%, -50%);
         opacity: 0;
         transition: var.$tr;
+        @media (max-width: (var.$r_desk - 24px)) {
+                display: none;
+            }
     }
     &__img {
         width: 100%;
-        height: 635px;
+        height: min(635px, 34vw);
         object-fit: cover;
         position: absolute;
         bottom: 0;
+        @media (max-width: var.$r_desk_full) {
+            height: min(660px, 44vw);
+            bottom: -12px;
+        }
     }
     &__name {
         width: 100%;
         position: absolute;
         bottom: 28px;
         left: 27px;
-        font-size: 24px;
-        opacity: 0;
+        font-size: clamp(16px, 2vw - 0.75rem, 24px);
+        // opacity: 0;
+        opacity: 1;
         transition: var.$tr;
         z-index: 1;
+        @media(hover: hover) {
+            opacity: 0;
+        }
+        @media (max-width: var.$r_desk_full) {
+            text-align: center;
+            left: 0;
+        }
+        @media (max-width: (var.$r_desk - 24px)) {
+            opacity: 1;
+            bottom: -8px;
+            position: absolute;
+        }
         &::before {
             content: '';
             display: block;
@@ -933,6 +1014,12 @@ p {
             left: -28px;
             bottom: -31px;
             z-index: -1;
+            @media (max-width: var.$r_desk_full) {
+                left: 0;
+            }
+            @media (max-width: (var.$r_desk - 24px)) {
+                content: none;
+            }
         }
     }
 }
@@ -1008,6 +1095,14 @@ p {
     padding: 150px 0;
     margin: 150px auto;
     width: min(1920px, 100%);
+    @media (max-width: var.$r_desk) {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    @media (max-width: var.$r_tab) {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -1079,6 +1174,14 @@ p {
 .areas {
     margin-top: 150px;
     margin-bottom: 150px;
+    @media (max-width: var.$r_desk) {
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+    @media (max-width: var.$r_tab) {
+        margin-top: 80px;
+        margin-bottom: 80px;
+    }
     &__list {
         margin-top: 50px;
     }
