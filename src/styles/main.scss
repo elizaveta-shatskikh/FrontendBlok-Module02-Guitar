@@ -26,7 +26,8 @@ p {
 .title-h2 {
     margin: 0;
     font-weight: 700;
-    font-size: 32px;
+    // font-size: 32px;
+    font-size: clamp(18px, 6vw - 1.25rem, 32px);
     letter-spacing: 5%;
     text-transform: uppercase;
     color: var.$gray;
@@ -170,7 +171,7 @@ p {
     &._min {
         svg {
             width: 296px;
-            height: 22px;
+            height: 23px;
         }
     }
 }
@@ -242,6 +243,9 @@ p {
         @media (max-width: var.$r_desk_full) {
             font-size: clamp(50px, 4vw + 1rem, 64px);
             // margin-bottom: 5px;
+        }
+        @media (max-width: var.$r_desk) {
+            font-size: 50px;
         }
         @media (max-width: (var.$r_desk - 174px)) {
             font-size: clamp(40px, 5.2vw, 50px);
@@ -947,9 +951,18 @@ p {
             height: min(750px, 49vw);
         }
         @media (max-width: (var.$r_desk - 24px)) {
+            // position: inherit;
+            // overflow: inherit;
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: space-between;
+            // gap: 50px;
         }
         @media(hover: hover) {
             border: 2px solid var.$dark;
+            @media (max-width: (var.$r_desk - 24px)) {
+                border: 2px solid var.$accent;
+            }
             &:hover {
                 border: 2px solid var.$accent;
                 .slider-teacher__name,
@@ -1000,8 +1013,11 @@ p {
         }
         @media (max-width: (var.$r_desk - 24px)) {
             opacity: 1;
-            bottom: -8px;
-            position: absolute;
+            // // bottom: -8px;
+            // position: relative;
+            // left: inherit;
+            // bottom: inherit;
+            // display: block;
         }
         &::before {
             content: '';
@@ -1022,6 +1038,13 @@ p {
             }
         }
     }
+    // &__wrap {
+    //     @media (max-width: (var.$r_desk - 24px)) {
+    //         display: block;
+    //         // width: 100%;
+    //         height: 100%;
+    //     }
+    // }
 }
 
 .accordion {
@@ -1030,13 +1053,17 @@ p {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        font-size: 32px;
+        // font-size: 32px;
+        font-size: clamp(14px, 6vw - 1.63rem, 32px);
         color: var.$accent;
         background-color: var.$light;
         border: none;
         border-radius: var.$br-min;
         padding: 21px 25px 19px 29px;
         margin-bottom: 24px;
+        @media (max-width: var.$r_tab) {
+            padding: 16px 16px 13px 20px;;
+        }
         &::after {
             content: '';
             display: block;
@@ -1070,15 +1097,23 @@ p {
         gap: 29px;
         margin: 0;
         padding: 30px 50px 14px 49px;
+        @media (max-width: var.$r_tab) {
+            padding: 31px 50px 15px 20px;
+            gap: 21px;
+        }
     }
     &__item {
         display: flex;
         align-items: center;
         gap: 7px;
-        font-size: 24px;
+        // font-size: 24px;
+        font-size: clamp(12px, 5vw - 1.27rem, 24px);
         font-weight: 300;
         color: var.$dark;
         padding-bottom: 15px;
+        @media (max-width: var.$r_tab) {
+            gap: 4px;
+        }
         &:not(:last-child) {
             border-bottom: 1px solid var.$gray;
         }
@@ -1098,16 +1133,25 @@ p {
     @media (max-width: var.$r_desk) {
         margin-top: 100px;
         margin-bottom: 100px;
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
     @media (max-width: var.$r_tab) {
-        margin-top: 80px;
+        margin-top: 83px;
         margin-bottom: 80px;
+        padding-top: 80px;
     }
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
         margin-top: 49px;
+        @media (max-width: var.$r_desk_full) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: var.$r_tab) {
+            gap: 20px;
+        }
     }
     &__item {
         background-color: var.$light;
@@ -1176,14 +1220,17 @@ p {
     margin-bottom: 150px;
     @media (max-width: var.$r_desk) {
         margin-top: 100px;
-        margin-bottom: 100px;
+        margin-bottom: 95px;
     }
     @media (max-width: var.$r_tab) {
         margin-top: 80px;
-        margin-bottom: 80px;
+        margin-bottom: 75px;
     }
     &__list {
         margin-top: 50px;
+        @media (max-width: var.$r_desk) {
+            margin-top: 49px;
+        }
     }
     &__link {
         display: flex;
@@ -1200,7 +1247,17 @@ p {
         &:not(:last-child) {
             border-bottom: 1px solid var.$accent;
             margin-bottom: 29px;
+            @media (max-width: var.$r_desk) {
+                margin-bottom: 23px;
+            }
             // padding-top: 59px;
+        }
+        @media (max-width: var.$r_desk_wxga) {
+            font-size: clamp(20px, 4vw - 1.25rem, 36px);
+        }
+        @media (max-width: var.$r_desk) {
+            padding: 20px;
+            font-size: 20px;
         }
         @media(hover: hover) {
             &:hover {
@@ -1238,38 +1295,65 @@ p {
         }
         &._acoustic {
             &::before {
-                width: 568px;
+                width: clamp(383px, 33vw, 568px);
                 height: 364px;
                 background-image: url(../images/areas/acoustic.png);
-                top: calc(50% - 225px);
-                left: 769px;
+                top: calc(50% - clamp(130px, 14.6vw, 225px));
+                left: clamp(440px, 52vw, 769px);
+                @media (max-width: var.$r_tab_max) {
+                    width: 330px;
+                }
+                @media (max-width: var.$r_tab) {
+                    display: none;
+                }
             }
         }
         &._drums {
             &::before {
-                width: 474px;
+                width: clamp(320px, 25vw, 474px);
                 height: 474px;
                 background-image: url(../images/areas/drums.png);
-                top: calc(50% - 230px);
-                left: 718px;               
+                top: calc(50% - clamp(146px, 13vw, 230px));
+                left: clamp(390px, 46vw, 718px);
+                @media (max-width: var.$r_tab_max) {
+                    width: 275px;
+                }
+                @media (max-width: var.$r_tab) {
+                    display: none;
+                }
             }
         }
         &._violin {
             &::before {
-                width: 568px;
+                width: clamp(383px, 30vw, 568px);
                 height: 492px;
                 background-image: url(../images/areas/violin.png);
-                top: calc(50% - 262px);
-                left: 718px;
+                top: calc(50% - clamp(155px, 14vw, 262px));
+                left: clamp(360px, 38vw, 718px);
+                @media (max-width: var.$r_tab_max) {
+                    width: 330px;
+                }
+                @media (max-width: var.$r_tab) {
+                    display: none;
+                }
             }
         }
         &._bas-guitar {
             &::before {
-                width: 585px;
+                // width: 585px;
+                width: clamp(395px, 31vw, 585px);
                 height: 439px;
                 background-image: url(../images/areas/bas-guitar.png);
-                top: calc(50% - 236px);
-                left: 719px;
+                // top: calc(50% - 236px);
+                top: calc(50% - clamp(151px, 13vw, 236px));
+                // left: 719px;
+                left: clamp(401px, 46vw, 719px);
+                @media (max-width: var.$r_tab_max) {
+                    width: 339px;
+                }
+                @media (max-width: var.$r_tab) {
+                    display: none;
+                }
             }
         }
     }
@@ -1283,14 +1367,40 @@ p {
     border-radius: var.$br-min;
     padding: 30px 50px;
     margin-bottom: 30px;
+    @media (max-width: var.$r_desk_wxga) {
+        grid-template-columns: 1fr 160px;
+        gap: 20px;
+    }
+    @media (max-width: var.$r_desk) {
+        padding-bottom: 24px;
+    }
+    @media (max-width: var.$r_tab) {
+        padding: 30px 15px 24px 15px;
+    }
     &__social {
         justify-self: end;
         margin-right: 3px;
+        @media (max-width: var.$r_desk) {
+            margin-top: 3px;
+        }
+    }
+    &__info {
+        @media (max-width: var.$r_desk_wxga) {
+            grid-column: 1 / 3;
+        }
+        @media (max-width: var.$r_desk) {
+            margin-top: 3px;
+        }
     }
     &__copy {
         text-align: right;
         align-self: end;
         margin-bottom: 6px;
+        @media (max-width: var.$r_desk_wxga) {
+            grid-column: 1 / 3;
+            text-align: left;
+            align-self: start;
+        }
     }
     &__text {
         line-height: 1.5;
