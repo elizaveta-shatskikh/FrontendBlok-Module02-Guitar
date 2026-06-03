@@ -942,29 +942,22 @@ p {
         background-color: var.$dark;
         border: 2px solid var.$accent; 
         border-radius: var.$br-max;
-        overflow: hidden;
-        box-sizing: border-box;
         position: relative;
+        overflow: hidden;
+        z-index: 2;
         transition: var.$tr;
+        box-sizing: border-box;
         @media (max-width: var.$r_desk_full) {
             max-width: 450px;
             height: min(750px, 49vw);
         }
-        @media (max-width: (var.$r_desk - 24px)) {
-            // position: inherit;
-            // overflow: inherit;
-            // display: flex;
-            // flex-direction: column;
-            // justify-content: space-between;
-            // gap: 50px;
-        }
         @media(hover: hover) {
-            border: 2px solid var.$dark;
-            @media (max-width: (var.$r_desk - 24px)) {
-                border: 2px solid var.$accent;
+            border-color: var.$dark;
+            @media (max-width: var.$r_tab) {
+                border-color: var.$accent;
             }
             &:hover {
-                border: 2px solid var.$accent;
+                border-color: var.$accent;
                 .slider-teacher__name,
                 .slider-teacher__grid {
                     opacity: 1;
@@ -979,9 +972,6 @@ p {
         transform: translate(-50%, -50%);
         opacity: 0;
         transition: var.$tr;
-        @media (max-width: (var.$r_desk - 24px)) {
-                display: none;
-            }
     }
     &__img {
         width: 100%;
@@ -1000,7 +990,6 @@ p {
         bottom: 28px;
         left: 27px;
         font-size: clamp(16px, 2vw - 0.75rem, 24px);
-        // opacity: 0;
         opacity: 1;
         transition: var.$tr;
         z-index: 1;
@@ -1011,13 +1000,26 @@ p {
             text-align: center;
             left: 0;
         }
-        @media (max-width: (var.$r_desk - 24px)) {
+        &._desktop {
+            @media (max-width: var.$r_tab) {
+                display: none;
+            }
+        }
+        &._mobile {
+            display: none;
+            font-size: 12px;
+            margin-top: 8px;
+            position: inherit;
+            bottom: inherit;
+            left: inherit;
             opacity: 1;
-            // // bottom: -8px;
-            // position: relative;
-            // left: inherit;
-            // bottom: inherit;
-            // display: block;
+            z-index: 2;
+            @media (max-width: var.$r_tab) {
+                display: block;
+            }
+            &::before {
+                display: none;
+            }
         }
         &::before {
             content: '';
@@ -1033,18 +1035,8 @@ p {
             @media (max-width: var.$r_desk_full) {
                 left: 0;
             }
-            @media (max-width: (var.$r_desk - 24px)) {
-                content: none;
-            }
         }
     }
-    // &__wrap {
-    //     @media (max-width: (var.$r_desk - 24px)) {
-    //         display: block;
-    //         // width: 100%;
-    //         height: 100%;
-    //     }
-    // }
 }
 
 .accordion {
@@ -1053,7 +1045,6 @@ p {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        // font-size: 32px;
         font-size: clamp(14px, 6vw - 1.63rem, 32px);
         color: var.$accent;
         background-color: var.$light;
@@ -1169,18 +1160,78 @@ p {
 }
 
 .result {
+    container-type: inline-size;
+    container-name: result;
+    @container result (max-width: 935px) {
+        .result__list {
+            grid-template-columns: repeat(2, 1fr);
+            padding-bottom: 130px;
+        }
+        .result__list ._subgrid {
+            grid-column: inherit;
+            grid-template-columns: inherit;
+        }
+        ._subgrid .result__text {
+            grid-column: 1 / 3;
+        }
+        .result__btn {
+            width: 100%;
+            grid-column: inherit;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 43px 50px;
+        }
+    }
+    @container result (max-width: 600px) {
+        .result__btn {
+            font-size: clamp(14px, 3cqi, 16px);
+        }
+    }
+    @container result (max-width: 470px) {
+        .result__list {
+            grid-template-columns: 1fr;
+            margin-top: 20px;
+            padding-bottom: 100px;
+        }
+        .result__item {
+            padding: 20px;
+            &:not(:last-child) {
+                padding-right: 15px;
+            }
+        }
+        .result__text {
+            gap: 12px;
+        }
+        .result__text span {
+            font-size: 18px;
+        }
+        .result__btn {
+            padding: 20px 75px;
+        }
+    }
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
         margin-top: 50px;
+        position: relative;
+        @media (max-width: var.$r_tab) {
+            gap: 20px;
+        }
     }
     &__item {
         padding: 30px;
         background-color: var.$light;
         border-radius: var.$br-min;
+        @media (max-width: var.$r_desk) {
+            padding: 20px;
+        }
         &:not(:last-child) {
             padding-right: 50px;
+            @media (max-width: var.$r_desk) {
+                padding-right: 30px;
+            }
         }
         &._subgrid {
             grid-column: 2 / 5;
@@ -1188,6 +1239,9 @@ p {
             grid-template-columns: subgrid;
             grid-template-rows: 130px;
             align-items: center;
+            @media (max-width: var.$r_desk) {
+                grid-template-rows: inherit;
+            }
         }
     }
     &__text {
@@ -1197,6 +1251,9 @@ p {
         font-size: 16px;
         color: var.$dark;
         line-height: 1.5;
+        @media (max-width: var.$r_desk) {
+            font-size: 14px;
+        }
         span {
             width: fit-content;
             font-size: 24px;
@@ -1212,6 +1269,11 @@ p {
         grid-column: 2 / 4;
         align-self: stretch;
         padding: 30px;
+        @media (max-width: var.$r_desk) {
+            font-size: 16px;
+            padding: 30px 50px;
+            line-height: 1.5;
+        }
     }
 }
 
@@ -1295,14 +1357,14 @@ p {
         }
         &._acoustic {
             &::before {
-                width: clamp(383px, 33vw, 568px);
+                width: clamp(330px, 37.5vw, 568px);
                 height: 364px;
                 background-image: url(../images/areas/acoustic.png);
+                // background-position: center;
+                // top: calc(50% - 225px);
                 top: calc(50% - clamp(130px, 14.6vw, 225px));
+                // left: 40vw;
                 left: clamp(440px, 52vw, 769px);
-                @media (max-width: var.$r_tab_max) {
-                    width: 330px;
-                }
                 @media (max-width: var.$r_tab) {
                     display: none;
                 }
@@ -1310,14 +1372,11 @@ p {
         }
         &._drums {
             &::before {
-                width: clamp(320px, 25vw, 474px);
+                width: clamp(275px, 25vw, 474px);
                 height: 474px;
                 background-image: url(../images/areas/drums.png);
                 top: calc(50% - clamp(146px, 13vw, 230px));
                 left: clamp(390px, 46vw, 718px);
-                @media (max-width: var.$r_tab_max) {
-                    width: 275px;
-                }
                 @media (max-width: var.$r_tab) {
                     display: none;
                 }
@@ -1325,14 +1384,11 @@ p {
         }
         &._violin {
             &::before {
-                width: clamp(383px, 30vw, 568px);
+                width: clamp(330px, 33vw, 568px);
                 height: 492px;
                 background-image: url(../images/areas/violin.png);
                 top: calc(50% - clamp(155px, 14vw, 262px));
                 left: clamp(360px, 38vw, 718px);
-                @media (max-width: var.$r_tab_max) {
-                    width: 330px;
-                }
                 @media (max-width: var.$r_tab) {
                     display: none;
                 }
@@ -1340,17 +1396,11 @@ p {
         }
         &._bas-guitar {
             &::before {
-                // width: 585px;
-                width: clamp(395px, 31vw, 585px);
+                width: clamp(339px, 33vw, 585px);
                 height: 439px;
                 background-image: url(../images/areas/bas-guitar.png);
-                // top: calc(50% - 236px);
                 top: calc(50% - clamp(151px, 13vw, 236px));
-                // left: 719px;
                 left: clamp(401px, 46vw, 719px);
-                @media (max-width: var.$r_tab_max) {
-                    width: 339px;
-                }
                 @media (max-width: var.$r_tab) {
                     display: none;
                 }
