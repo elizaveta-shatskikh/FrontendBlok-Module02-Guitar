@@ -1,6 +1,10 @@
 @use 'font';
 @use 'var';
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: var.$font;
@@ -368,9 +372,7 @@ p {
         }
         @media(hover: hover) {
             &:hover {
-                @media (max-width: (var.$r_desk - 24px)) {
-                    border-color: var.$accent;
-                }
+                border-color: var.$accent;
                 &::before {
                     width: 100%;
                     opacity: 1;
