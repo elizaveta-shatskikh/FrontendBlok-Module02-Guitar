@@ -41,9 +41,16 @@ p {
     height: 71px;
     position: fixed;
     top: 0;
-    z-index: 9999;
+    z-index: 999;
     @media (max-width: var.$r_tab) {
         height: 64px;
+    }
+    @media (max-width: (var.$r_tab - 20px)) {
+        background-color: var.$accent;
+        border-radius: 10px 10px 0 0;
+    }
+    @media (max-width: var.$r_mobile_600) {
+        height: 40px;
     }
     &::before {
         content: '';
@@ -57,7 +64,10 @@ p {
         left: 0;
         z-index: -1;
         @media (max-width: var.$r_tab) {
-            top: -2px;
+            top: -3px;
+        }
+        @media (max-width: (var.$r_tab - 20px)) {
+            display: none;
         }
     }
     &__logo {
@@ -70,6 +80,9 @@ p {
         }
         @media (max-width: var.$r_tab) {
             padding: 16px 26px 0 15px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            padding: 4px 15px 0 15px;
         }
         &::before {
             content: '';
@@ -98,6 +111,9 @@ p {
                 background-repeat: no-repeat;
                 right: -67px;
             }
+            @media (max-width: (var.$r_tab - 20px)) {
+                display: none;
+            }
         }
     }
     &__info {
@@ -110,6 +126,9 @@ p {
         }
         @media (max-width: var.$r_tab) {
             padding: 21px 16px 0 18px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            padding: 7px 15px 0 15px;
         }
         &::before {
             content: '';
@@ -138,6 +157,9 @@ p {
                 background-repeat: no-repeat;
                 left: -57px;
             }
+            @media (max-width: (var.$r_tab - 20px)) {
+                display: none;
+            }
         }
     }
     &__link {
@@ -155,6 +177,10 @@ p {
         @media (max-width: var.$r_tab) {
             font-size: 16px;
         }
+        @media (max-width: var.$r_mobile_600) {
+            font-size: 10px;
+            padding-bottom: 3px;
+        }
     }
 }
 
@@ -165,6 +191,9 @@ p {
             height: 31px;
             @media (max-width: var.$r_desk) {
                 width: clamp(300px, 39vw, 400px);
+            }
+            @media (max-width: var.$r_mobile_600) {
+                width: 150px;
             }
         }
     }
@@ -228,6 +257,12 @@ p {
     @media (max-width: (var.$r_desk - 24px)) {
         padding: 50px 30px;
     }
+    @media (max-width: var.$r_mobile_600) {
+        margin-top: 88px;
+        border-radius: var.$br-min;
+        padding: 20px 15px;
+        gap: 30px;
+    }
     &__main {
         // flex-basis: calc(100% - 649px - 50px);
         display: flex;
@@ -242,7 +277,6 @@ p {
         margin-bottom: 19px;
         @media (max-width: var.$r_desk_full) {
             font-size: clamp(50px, 4vw + 1rem, 64px);
-            // margin-bottom: 5px;
         }
         @media (max-width: var.$r_desk) {
             font-size: 50px;
@@ -252,6 +286,10 @@ p {
         }
         @media (max-width: var.$r_tab) {
             margin-bottom: 20px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            font-size: clamp(25px, 4.9vw + 0.4rem, 40px);
+            margin-bottom: 21px;
         }
     }
     &__btn {
@@ -267,6 +305,11 @@ p {
         @media (max-width: var.$r_tab) {
             margin-top: 30px;
         }
+        @media (max-width: var.$r_mobile_600) {
+            font-size: clamp(14px, 2.3vw + 0.35rem, 20px);
+            margin-top: 12px;
+            padding: 31px 0;
+        }
     }
     &__info {
         // flex-basis: 649px;
@@ -275,6 +318,10 @@ p {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+        }
+        @media (max-width: (var.$r_tab - 20px)) {
+            grid-template-columns: 1fr;
+            gap: 11px;
         }
     }
     &__item {
@@ -297,6 +344,11 @@ p {
             margin-right: 0;
             border-radius: var.$br-min;
             border-right: 1px solid var.$light;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            padding-top: 23px;
+            padding-bottom: 23px;
+            padding-left: 64px;
         }
         & + & {
             margin-top: 19px;
@@ -350,6 +402,9 @@ p {
                 height: 100px;
                 right: 0;
             }
+            @media (max-width: var.$r_mobile_600) {
+                height: 102%;
+            }
         }
     }
     &__text {
@@ -357,6 +412,9 @@ p {
         font-weight: 200;
         @media (max-width: (var.$r_desk - 24px)) {
             font-size: 18px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            font-size: clamp(12px, 2.3vw + 0.23rem, 18px);
         }
         span {
             display: block;
@@ -366,6 +424,10 @@ p {
             @media (max-width: (var.$r_desk - 24px)) {
                 font-size: 20px;
                 margin-top: 10px;
+            }
+            @media (max-width: var.$r_mobile_600) {
+                font-size: clamp(14px, 2.3vw + 0.35rem, 20px);
+                margin-top: 4px;
             }
         }
     }
@@ -386,6 +448,12 @@ p {
             top: calc(50% - 25px);
             right: inherit;
             left: 30px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            width: 40px;
+            height: 40px;
+            top: calc(50% - 20px);
+            left: 14px;
         }
         &::before {
             content: '';
@@ -734,16 +802,13 @@ p {
     border-radius: var.$br-min;
     position: relative;
     @media (max-width: var.$r_desk_full_over) {
-        padding-right: clamp(200px, 20vw, 365px);
+        padding-right: clamp(250px, 32vw, 365px);
     }
-    @media (max-width: var.$r_desk_full) {
-        padding-right: 365px;
+    @media (max-width: (var.$r_tab - 20px)) {
+        padding: 15px;
     }
-    @media (max-width: var.$r_desk) {
-        padding-right: 340px;
-    }
-    @media (max-width: (var.$r_desk - 24px)) {
-        padding-right: 250px;
+    @media (max-width: var.$r_mobile_600) {
+        padding-bottom: 28px;
     }
     &__title {
         font-size: 24px;
@@ -752,6 +817,10 @@ p {
         text-transform: uppercase;
         margin-top: 0;
         margin-bottom: 30px;
+        text-wrap: nowrap;
+        @media (max-width: var.$r_tab) {
+            font-size: clamp(18px, 1.5vw + 0.8rem, 24px);
+        }
     }
     &__text {
         font-size: 20px;
@@ -759,26 +828,30 @@ p {
         @media (max-width: var.$r_desk_full) {
             max-width: 572px;
         }
+        @media (max-width: var.$r_tab) {
+            font-size: clamp(14px, 1.6vw + 0.5rem, 20px);
+        }
     }
     &__img {
         width: 100%;
         position: absolute;
+        @media (max-width: (var.$r_tab - 20px)) {
+            display: none;
+        }
         &._electroguitar {
             max-width: 337px;
             top: -68px;
             right: -21px;
             @media (max-width: var.$r_desk_full_over) {
-                max-width: clamp(317px, 22vw, 337px);
+                max-width: clamp(317px, 30vw, 337px);
                 top: inherit;
                 bottom: -68px;
             }
             @media (max-width: var.$r_desk_full) {
-                max-width: 337px;
                 top: -68px;
                 bottom: inherit;
             }
             @media (max-width: var.$r_desk) {
-                max-width: 317px;
                 top: -64px;
                 right: -13px;
             }
@@ -788,6 +861,7 @@ p {
                 right: -13px;
             }
             @media (max-width: var.$r_tab) {
+                max-width: clamp(150px, 33vw, 252px);
                 top: -51px;
                 right: 5px;
             }
@@ -1354,6 +1428,7 @@ p {
             z-index: 1;
             transform: scale(0);
             transition: var.$tr;
+            pointer-events: none;
         }
         &._acoustic {
             &::before {
