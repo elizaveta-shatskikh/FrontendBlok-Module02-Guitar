@@ -9,13 +9,23 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 
 const swiper = new Swiper('.slider-teacher', {
-    slidesPerView: 3,
-    spaceBetween: 30,
+    slidesPerView: 2,
+    spaceBetween: 15,
     navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
         },
     modules: [Navigation, Pagination],
+    breakpoints: {
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+        },
+    },
 });
 
 // Accordion
