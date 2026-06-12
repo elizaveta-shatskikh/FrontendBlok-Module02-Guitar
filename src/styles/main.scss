@@ -203,6 +203,10 @@ p {
         svg {
             width: 296px;
             height: 23px;
+            @media (max-width: var.$r_mobile_600) {
+                width: 200px;
+                height: 16px;
+            }
         }
     }
 }
@@ -257,7 +261,7 @@ p {
         padding: 80px 40px;
     }
     @media (max-width: (var.$r_desk - 24px)) {
-        padding: 50px 30px;
+        padding: 49px 30px;
     }
     @media (max-width: (var.$r_tab - 20px)) {
         margin-top: 100px;
@@ -389,7 +393,7 @@ p {
             content: '';
             display: block;
             width: 0;
-            height: 151px;
+            height: 151.5px;
             background-color: var.$accent;
             border: 1px solid var.$accent;
             border-radius: 20px 0 0 20px;
@@ -876,6 +880,7 @@ p {
 }
 
 .tag {
+    overflow: hidden;
     margin-top: 151px;
     margin-bottom: 151px;
     @media (max-width: var.$r_desk) {
@@ -968,7 +973,7 @@ p {
         }
     }
     &__schedule {
-        margin-top: 50px;
+        margin-top: 48px;
         @media (max-width: var.$r_mobile_600) {
             margin-top: 32px;
         }
@@ -1187,7 +1192,7 @@ p {
         padding: 21px 25px 19px 29px;
         margin-bottom: 24px;
         @media (max-width: var.$r_tab) {
-            padding: 16px 16px 13px 20px;;
+            padding: 16px 16px 14px 20px;;
         }
         @media (max-width: var.$r_mobile_600) {
             border-radius: 10px;
@@ -1269,6 +1274,7 @@ p {
 
 .steps {
     border: 1px solid var.$gray;
+    box-sizing: border-box;
     border-radius: var.$br-max;
     background: linear-gradient(180deg, #1f2023 0%, #7027e2 50%, #1f2023 100%);
     padding: 150px 0;
@@ -1281,9 +1287,10 @@ p {
         padding-bottom: 100px;
     }
     @media (max-width: var.$r_tab) {
-        margin-top: 83px;
+        margin-top: 80px;
         margin-bottom: 80px;
         padding-top: 80px;
+        padding-bottom: 99px;
     }
     @media (max-width: var.$r_mobile_600) {
         margin-top: 50px;
@@ -1621,11 +1628,22 @@ p {
     @media (max-width: var.$r_tab) {
         padding: 30px 15px 24px 15px;
     }
+    @media (max-width: var.$r_mobile_600) {
+        grid-template-columns: 1fr;
+        padding-top: 20px;
+        padding-bottom: 19px;
+        margin-bottom: 35px;
+        gap: 21px;
+    }
     &__social {
         justify-self: end;
         margin-right: 3px;
         @media (max-width: var.$r_desk) {
             margin-top: 3px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            justify-self: start;
+            margin-top: 6px;
         }
     }
     &__info {
@@ -1634,6 +1652,10 @@ p {
         }
         @media (max-width: var.$r_desk) {
             margin-top: 3px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            grid-column: 1 / 2;
+            margin-top: 22px;
         }
     }
     &__copy {
@@ -1645,12 +1667,19 @@ p {
             text-align: left;
             align-self: start;
         }
+        @media (max-width: var.$r_mobile_600) {
+            grid-column: 1 / 2;
+            margin-bottom: 0;
+        }
     }
     &__text {
         line-height: 1.5;
-        // & + & {
-        //     // margin-top: 6px;
-        // }
+        @media (max-width: var.$r_mobile_600) {
+            font-size: 12px;
+            & + & {
+                margin-top: 20px;
+            }
+        }
     }
     &__link {
         color: var.$accent;
@@ -1658,6 +1687,12 @@ p {
         margin-left: 5px;
         box-shadow: 0 4px 0 -3px var.$accent;
         transition: var.$tr;
+        @media (max-width: var.$r_mobile_600) {
+            display: block;
+            width: fit-content;
+            margin-top: 5px;
+            margin-left: 0;
+        }
         @media(hover: hover) {
             &:hover {
                 box-shadow: 0 4px 0 -3px transparent;
@@ -1671,6 +1706,9 @@ p {
     align-items: center;
     justify-content: end;
     gap: 11px;
+    @media (max-width: var.$r_mobile_600) {
+        gap: 9px;
+    }
     &__link {
         display: flex;
         align-items: center;
