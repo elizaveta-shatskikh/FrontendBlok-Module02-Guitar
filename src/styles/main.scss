@@ -257,6 +257,9 @@ p {
     @media (max-width: (var.$r_desk - 24px)) {
         padding: 50px 30px;
     }
+    @media (max-width: (var.$r_tab - 20px)) {
+        margin-top: 100px;
+    }
     @media (max-width: var.$r_mobile_600) {
         margin-top: 88px;
         border-radius: var.$br-min;
