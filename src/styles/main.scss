@@ -1285,6 +1285,13 @@ p {
         margin-bottom: 80px;
         padding-top: 80px;
     }
+    @media (max-width: var.$r_mobile_600) {
+        margin-top: 50px;
+        margin-bottom: 51px;
+        padding-top: 20px;
+        padding-bottom: 18px;
+        border-radius: var.$br-min;
+    }
     &__list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -1296,19 +1303,35 @@ p {
         @media (max-width: var.$r_tab) {
             gap: 20px;
         }
+        @media (max-width: var.$r_mobile_600) {
+            grid-template-columns: 1fr;
+            margin-top: 20px;
+        }
     }
     &__item {
         background-color: var.$light;
         border-radius: var.$br-max;
         padding: 30px;
+        @media (max-width: var.$r_mobile_600) {
+            border-radius: var.$br-min;
+            padding: 19px 23px 20px 14px;
+        }
     }
     &__icon {
         margin-bottom: 17px;
+        @media (max-width: var.$r_mobile_600) {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 10px;
+        }
     }
     &__text {
         font-size: 16px;
         color: var.$dark;
         line-height: 1.5;
+        @media (max-width: var.$r_mobile_600) {
+            font-size: 12px;
+        }
     }
 }
 
