@@ -1383,7 +1383,7 @@ p {
             font-size: 18px;
         }
         .result__btn {
-            padding: 20px 75px;
+            padding: 18px 75px;
         }
     }
     &__list {
@@ -1464,10 +1464,17 @@ p {
         margin-top: 80px;
         margin-bottom: 75px;
     }
+    @media (max-width: var.$r_mobile_600) {
+        margin-top: 51px;
+        margin-bottom: 50px;
+    }
     &__list {
         margin-top: 50px;
         @media (max-width: var.$r_desk) {
             margin-top: 49px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            margin-top: 19px;
         }
     }
     &__link {
@@ -1488,7 +1495,9 @@ p {
             @media (max-width: var.$r_desk) {
                 margin-bottom: 23px;
             }
-            // padding-top: 59px;
+            @media (max-width: var.$r_mobile_600) {
+                margin-bottom: 15px;
+            }
         }
         @media (max-width: var.$r_desk_wxga) {
             font-size: clamp(20px, 4vw - 1.25rem, 36px);
@@ -1496,6 +1505,10 @@ p {
         @media (max-width: var.$r_desk) {
             padding: 20px;
             font-size: 20px;
+        }
+        @media (max-width: var.$r_mobile_600) {
+            font-size: clamp(14px, 2.5vw + 0.29rem, 20px);
+            padding: 11px 0 9px 0;
         }
         @media(hover: hover) {
             &:hover {
@@ -1519,6 +1532,10 @@ p {
             background-repeat: no-repeat;
             background-size: contain;
             transition: var.$tr;
+            @media (max-width: var.$r_mobile_600) {
+                width: 40px;
+                height: 40px;
+            }
         }
         &::before {
             content: '';
